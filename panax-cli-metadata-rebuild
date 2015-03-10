@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+var program = require('commander');
+
+program
+	.parse(process.argv);
+
+/**
+ * PanaxJS call
+ */
+var Panax = require('../panaxjs');
+var panax_config = require('./config/panax');
+var oPanax = new Panax(panax_config);
+
+oPanax.rebuildMetadata(function (err, response) {
+	if(err) {
+		console.error(chalk.red('Error: ') + err);
+		process.exit(1);
+	}
+
+	console.log(chalk.bold.green('METADATA REBUILT!'));
+	
+	process.exit(0);
+});
