@@ -3,11 +3,12 @@
 var chalk = require('chalk');
 var program = require('commander');
 
-program.usage('[catalogPath [columnPath]]');
+program
+	.usage('[catalogPath [columnPath]]')
+	.parse(process.argv);
 
-program.parse(process.argv);
-
-var args = program.args;
+var args = program.args.slice(0, 3); // Max number of args for 'list' a config, otherwise is 'add'
+console.log(args)
 
 /**
  * PanaxJS call

@@ -2,9 +2,9 @@
 
 var program = require('commander');
 
-program.usage('<catalogPath> <columnPath> <propertyPath|command>');
-
-program.parse(process.argv);
+program
+	.usage('<catalogPath> <columnPath> <propertyPath|command>')
+	.parse(process.argv);
 
 var args = program.args;
 
