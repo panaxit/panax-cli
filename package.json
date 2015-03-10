@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.0.0",
-    "commander": "^2.7.0"
+    "commander": "^2.7.0",
+    "panaxjs": "git+https://benoror@bitbucket.org/panaxit/panaxjs.git"
   }
 }

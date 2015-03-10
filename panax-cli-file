@@ -31,7 +31,7 @@ fs.readFile(filePath, function (err, data) {
 	var lines = data.toString().split("\n");
 
 	lines.forEach(function (line, idx) {
-		exec('panax-cli' + ' ' + line, function (err, stdout) {
+		exec('panax-cli ' + line, function (err, stdout) {
 			//console.log(chalk.bold.grey('> ' + cliPath + ' ' + line));
 			//console.log(chalk.bold.green('> ') + line);
 			if(err)

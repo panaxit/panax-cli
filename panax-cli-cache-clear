@@ -13,7 +13,7 @@ var args = program.args.slice(0, 1);
 /**
  * PanaxJS call
  */
-var Panax = require('../panaxjs');
+var Panax = require('panaxjs');
 var panax_config = require('./config/panax');
 var oPanax = new Panax(panax_config);
 
