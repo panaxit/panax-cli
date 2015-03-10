@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+var program = require('commander');
+
+program
+	.usage('[catalogPath]')
+	.parse(process.argv);
+
+// Max number of args to 'clear' cache
+var args = program.args.slice(0, 1);
+
+/**
+ * PanaxJS call
+ */
+var Panax = require('../panaxjs');
+var panax_config = require('./config/panax');
+var oPanax = new Panax(panax_config);
+
+oPanax.clearCache(args, function (err, response) {
+	if(err) {
+		console.error(chalk.red('Error: ') + err);
+		process.exit(1);
+	}
+
+	console.log(chalk.bold.green('CACHE CLEARED!'));
+
+	process.exit(0);
+});
