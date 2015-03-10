@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var chalk = require('chalk');
 var program = require('commander');
 
 program
@@ -20,9 +21,16 @@ var oPanax = new Panax(panax_config);
 
 oPanax.tableConfig(args, function (err, response) {
 	if(err) {
-		console.error('Error: ' + err);
+		console.error(chalk.red('Error: ') + err);
 		process.exit(1);
 	}
+
+	console.log(chalk.bold.green('ADD') + ':\t' +
+		chalk.bold.white('\'' + args[0] + '\'') + ', ' +
+		chalk.blue('\'' + args[1] + '\'') + ', ' +
+		chalk.cyan('\'' + args[2] + '\'') + ', ' +
+		'\'' + args[3] + '\''
+	);
 
 	process.exit(0);
 });
