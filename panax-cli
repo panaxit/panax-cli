@@ -4,7 +4,7 @@ var program = require('commander');
 
 program
 	.version('0.0.1')
-	.option('-d, --db-name [dbName]', 'Specify a DB name')
+	//.option('-d, --db-name [dbName]', 'Specify a DB name')
 	.command('config', 'Manage Panax configurations')
 	.command('cache', 'Manage Panax cache')
 	.command('metadata', 'Manage Panax metadata')
