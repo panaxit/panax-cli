@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var chalk = require('chalk');
+
+program.usage('[catalogPath [columnPath [propertyPath|command]]]');
+
+program.parse(process.argv);
+
+var args = program.args;
+
+var Panax = require('../panaxjs');
+var panax_config = require('./config/panax');
+
+var oPanax = new Panax(panax_config);
+
+oPanax.getConfig(args, function (err, lines) {
+	if(err) {
+		console.error('Error: ' + err);
+		process.exit(1);
+	}
+	if(!lines.length) {
+		console.info('Info: No results for given arguments: '+args);
+		process.exit(1);
+	}
+
+	lines.forEach(function (line, idx) {
+		line = line['propertyString'].split(' ').slice(2).join(' ').split(', ');
+		console.log(idx + '\t' +
+			chalk.bold.white(line[0]) + ', ' +
+			chalk.green(line[1]) + ', ' +
+			chalk.blue(line[2]) + ', ' +
+			line[3]
+			);
+	});
+
+	process.exit(0);
+});

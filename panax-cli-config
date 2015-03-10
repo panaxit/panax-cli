@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+	.command('add', 'Add configuration')
+	.command('remove', 'Remove configuration')
+	.command('list', 'List configuration(s)')
+
+program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+  program.help();
+}

@@ -2,7 +2,7 @@
   "name": "panax-cli",
   "version": "0.0.1",
   "description": "PanaxCLI",
-  "main": "index.js",
+  "main": "panax-cli",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,13 @@
     "type": "git",
     "url": "https://benoror@bitbucket.org/benoror/panax-cli.git"
   },
+  "bin": {
+    "panax-cli": "panax-cli"
+  },
   "author": "Benjamin Orozco <benoror@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.7.0"
+  }
 }
