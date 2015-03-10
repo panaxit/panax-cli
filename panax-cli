@@ -8,6 +8,7 @@ program
 	.command('config', 'Manage Panax configurations')
 	.command('cache', 'Manage Panax cache')
 	.command('metadata', 'Manage Panax metadata')
+	.command('file', 'Run PanaxCLI commands from file')
 	.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
