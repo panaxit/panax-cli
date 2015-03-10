@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
-var program = require('commander');
 var chalk = require('chalk');
+var program = require('commander');
 
-program.usage('[catalogPath [columnPath [propertyPath|command]]]');
+program.usage('[catalogPath [columnPath]]');
 
 program.parse(process.argv);
 
 var args = program.args;
 
+/**
+ * PanaxJS call
+ */
 var Panax = require('../panaxjs');
 var panax_config = require('./config/panax');
-
 var oPanax = new Panax(panax_config);
 
 oPanax.getConfig(args, function (err, lines) {
@@ -20,8 +22,8 @@ oPanax.getConfig(args, function (err, lines) {
 		process.exit(1);
 	}
 	if(!lines.length) {
-		console.info('Info: No results for given arguments: '+args);
-		process.exit(1);
+		console.warn('Warning: No results for given arguments:\n\n'+args.join(', '));
+		process.exit(9);
 	}
 
 	lines.forEach(function (line, idx) {
