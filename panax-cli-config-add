@@ -8,5 +8,21 @@ program
 
 var args = program.args;
 
-if (!args.length)
+if (args.length < 4)
   program.help();
+
+/**
+ * PanaxJS call
+ */
+var Panax = require('../panaxjs');
+var panax_config = require('./config/panax');
+var oPanax = new Panax(panax_config);
+
+oPanax.tableConfig(args, function (err, response) {
+	if(err) {
+		console.error('Error: ' + err);
+		process.exit(1);
+	}
+
+	process.exit(0);
+});
