@@ -1,0 +1,7 @@
+config list dbo.Logs
+config add dbo.Logs Nombre @whatever 'I am a test'
+config list dbo.Logs
+config remove dbo.Logs Nombre @whatever
+config list dbo.Logs
+cache clear
+metadata rebuild

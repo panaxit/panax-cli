@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var chalk = require('chalk');
+var program = require('commander');
+var path = require('path');
+var fs = require('fs');
+var exec = require('child_process').exec;
+
+program
+	.usage('<file.px>')
+	.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+  program.help();
+}
+
+/**
+ * PanaxJS call
+ */
+var cliPath = path.resolve(__dirname, './panax-cli')
+var filePath = path.relative(__dirname, path.normalize(program.args[0]));
+
+fs.readFile(filePath, function (err, data) {
+	if(err) {
+		console.error(chalk.red('Error: ') + err);
+		process.exit(1);
+	}
+
+	console.log(chalk.bold.green('Running Panax commands from `' + filePath + '`:\n'));
+
+	var lines = data.toString().split("\n");
+
+	lines.forEach(function (line, idx) {
+		exec('panax-cli' + ' ' + line, function (err, stdout) {
+			//console.log(chalk.bold.grey('> ' + cliPath + ' ' + line));
+			//console.log(chalk.bold.green('> ') + line);
+			if(err)
+				return console.error(chalk.red('Exec Error: ') + err);
+
+	    console.log('stdout: ' + stdout);
+		});
+	});
+});
