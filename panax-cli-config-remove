@@ -6,7 +6,23 @@ program
 	.usage('<catalogPath> <columnPath> <propertyPath|command>')
 	.parse(process.argv);
 
+// 3 = Min number of args to 'remove' a config
 var args = program.args;
-
-if (!args.length)
+if (args.length < 3)
   program.help();
+
+/**
+ * PanaxJS call
+ */
+var Panax = require('../panaxjs');
+var panax_config = require('./config/panax');
+var oPanax = new Panax(panax_config);
+
+oPanax.tableConfig(args, true, function (err, response) {
+	if(err) {
+		console.error('Error: ' + err);
+		process.exit(1);
+	}
+
+	process.exit(0);
+});

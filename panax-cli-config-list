@@ -7,7 +7,8 @@ program
 	.usage('[catalogPath [columnPath]]')
 	.parse(process.argv);
 
-var args = program.args.slice(0, 3); // Max number of args for 'list' a config, otherwise is 'add'
+// Max number of args to 'list' a config
+var args = program.args.slice(0, 3);
 
 /**
  * PanaxJS call
@@ -16,7 +17,7 @@ var Panax = require('../panaxjs');
 var panax_config = require('./config/panax');
 var oPanax = new Panax(panax_config);
 
-oPanax.tableConfig(args, function (err, lines) {
+oPanax.tableConfig(args, false, function (err, lines) {
 	if(err) {
 		console.error('Error: ' + err);
 		process.exit(1);

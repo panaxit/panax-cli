@@ -6,8 +6,8 @@ program
 	.usage('<catalogPath> <columnPath> <propertyPath|command> <value>')
 	.parse(process.argv);
 
+// 4 = Min number of args to 'add' a config
 var args = program.args;
-
 if (args.length < 4)
   program.help();
 
@@ -18,7 +18,7 @@ var Panax = require('../panaxjs');
 var panax_config = require('./config/panax');
 var oPanax = new Panax(panax_config);
 
-oPanax.tableConfig(args, function (err, response) {
+oPanax.tableConfig(args, false, function (err, response) {
 	if(err) {
 		console.error('Error: ' + err);
 		process.exit(1);
