@@ -17,7 +17,6 @@ if (!process.argv.slice(2).length) {
 /**
  * PanaxJS call
  */
-var cliPath = path.resolve(__dirname, './panax-cli')
 var filePath = path.relative(__dirname, path.normalize(program.args[0]));
 
 fs.readFile(filePath, function (err, data) {
@@ -32,8 +31,7 @@ fs.readFile(filePath, function (err, data) {
 
 	lines.forEach(function (line, idx) {
 		exec('panax-cli ' + line, function (err, stdout) {
-			//console.log(chalk.bold.grey('> ' + cliPath + ' ' + line));
-			//console.log(chalk.bold.green('> ') + line);
+			console.log(chalk.bold.green('> ') + line);
 			if(err)
 				return console.error(chalk.red('Exec Error: ') + err);
 
