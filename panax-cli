@@ -9,7 +9,8 @@ program
 	.command('config', 'Manage Panax configurations')
 	.command('cache', 'Manage Panax cache')
 	.command('metadata', 'Manage Panax metadata')
-	.command('file', 'Run PanaxCLI commands from batch file')
+	.command('file', 'Run Panax JSON config file')
+	.command('dump', 'Dump Panax config to JSON file')
 	.parse(process.argv);
 
 if (!process.argv.slice(2).length) {

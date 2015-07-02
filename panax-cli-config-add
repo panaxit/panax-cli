@@ -4,7 +4,7 @@ var chalk = require('chalk');
 var program = require('commander');
 
 program
-	.usage('<catalogPath> <columnPath> <propertyPath|command> <value>')
+	.usage('<entityPath> <columnPath> <propertyPath|command> <value>')
 	.parse(process.argv);
 
 // 4 = Min number of args to 'add' a config

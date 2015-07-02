@@ -4,7 +4,7 @@ var chalk = require('chalk');
 var program = require('commander');
 
 program
-	.usage('[catalogPath]')
+	.usage('[entityPath]')
 	.parse(process.argv);
 
 // Max number of args to 'clear' cache
@@ -23,7 +23,7 @@ oPanax.clearCache(args, function (err, response) {
 		process.exit(1);
 	}
 
-	console.log(chalk.bold.green('CACHE CLEARED!'));
+	console.log(args[0] + ': ' + chalk.bold.green('CACHE CLEARED!'));
 
 	process.exit(0);
 });
